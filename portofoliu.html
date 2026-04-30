@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofoliu — ZAIA Design</title>
+<meta name="description" content="Proiecte rezidențiale ZAIA Design — apartamente, case, penthouses și studiouri finalizate în București și țară.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --cream: #FAF6EE; --pink-soft: #F1DDD3; --pink-deep: #E8C5BD;
+  --cobalt: #1F3A8A; --cobalt-deep: #0B1F5C;
+  --ink: #2A2520; --ink-soft: #6B6259; --neon: #D4FF00;
+  --hairline: rgba(42,37,32,0.14);
+  --serif: 'Cormorant Garamond', serif; --sans: 'Manrope', sans-serif;
+}
+html { font-family: var(--sans); background: var(--cream); color: var(--ink); }
+.eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 50;
+  padding: 24px 72px; display: flex; align-items: center; justify-content: space-between;
+  background: rgba(250,246,238,0.92); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--hairline);
+}
+.nav-logo { font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--cobalt); letter-spacing: 0.32em; text-decoration: none; }
+.nav-links { display: flex; gap: 40px; }
+.nav-links a { color: var(--ink); text-decoration: none; font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--cobalt); }
+
+/* HERO */
+.page-header { padding: 100px 72px 80px; background: var(--cream); text-align: center; border-bottom: 1px solid var(--hairline); }
+.page-header h1 { font-family: var(--serif); font-size: 130px; line-height: 1; font-weight: 300; color: var(--ink); margin-top: 16px; }
+.page-header p { font-family: var(--serif); font-size: 24px; font-style: italic; color: var(--ink-soft); margin-top: 20px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+/* FILTERS */
+.filters { display: flex; gap: 6px; justify-content: center; padding: 48px 72px 0; flex-wrap: wrap; }
+.filter-btn {
+  padding: 10px 22px; border-radius: 999px; font-size: 12px; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+  border: 1px solid var(--hairline); background: transparent; color: var(--ink);
+  transition: all 0.25s; font-family: var(--sans);
+}
+.filter-btn.active { background: var(--cobalt); color: var(--cream); border-color: var(--cobalt); }
+
+/* GRID */
+.portfolio-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px; padding: 64px 72px 120px;
+}
+.project-card { cursor: pointer; }
+.project-card:nth-child(3n+2) { margin-top: 60px; }
+.project-img {
+  aspect-ratio: 4/5; overflow: hidden; position: relative;
+  background: var(--pink-deep); border-radius: 50% 50% 4px 4px / 16% 16% 4px 4px;
+}
+.project-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s; }
+.project-card:hover .project-img img { transform: scale(1.04); }
+.project-tag {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(250,246,238,0.92); padding: 6px 12px; border-radius: 999px;
+  font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cobalt);
+}
+.project-info { padding: 24px 8px 0; text-align: center; }
+.project-info h3 { font-family: var(--serif); font-size: 32px; line-height: 1.1; color: var(--ink); margin-bottom: 8px; font-weight: 400; }
+.project-meta { font-size: 10px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 12px; }
+.project-desc { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--ink-soft); line-height: 1.5; }
+
+/* FOOTER */
+footer { padding: 60px 72px 36px; background: var(--cobalt-deep); color: var(--cream); }
+.footer-logo { font-family: var(--serif); font-size: 64px; letter-spacing: 0.32em; font-weight: 400; text-align: center; display: block; margin-bottom: 12px; }
+.footer-tagline { font-size: 11px; font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; color: var(--neon); text-align: center; margin-bottom: 36px; }
+.footer-links { display: flex; justify-content: center; gap: 32px; margin-bottom: 36px; }
+.footer-links a { color: var(--cream); font-size: 12px; text-decoration: none; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+.footer-bottom { padding-top: 24px; border-top: 1px solid rgba(250,246,238,0.15); display: flex; justify-content: space-between; font-size: 11px; opacity: 0.5; letter-spacing: 0.1em; }
+
+@media (max-width: 1024px) {
+  nav, .page-header, .filters, .portfolio-grid, footer { padding-left: 32px; padding-right: 32px; }
+  .portfolio-grid { grid-template-columns: 1fr 1fr; }
+  .project-card:nth-child(3n+2) { margin-top: 0; }
+  .project-card:nth-child(2n) { margin-top: 40px; }
+  .page-header h1 { font-size: 72px; }
+}
+@media (max-width: 600px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+  .project-card:nth-child(n) { margin-top: 0; }
+  .nav-links { display: none; }
+  .page-header h1 { font-size: 52px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Z A I A</a>
+  <div class="nav-links">
+    <a href="/">Acasă</a>
+    <a href="/portofoliu.html" class="active">Portofoliu</a>
+    <a href="/servicii.html">Servicii</a>
+    <a href="/despre.html">Despre</a>
+    <a href="/calculator.html">Calculator</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="eyebrow">— Portofoliu</div>
+  <h1>Proiecte recente</h1>
+  <p>O selecție de apartamente și case private finalizate în ultimii doi ani.</p>
+</header>
+
+<div class="filters">
+  <button class="filter-btn active" data-filter="toate">Toate</button>
+  <button class="filter-btn" data-filter="Apartament">Apartament</button>
+  <button class="filter-btn" data-filter="Casă">Casă</button>
+  <button class="filter-btn" data-filter="Penthouse">Penthouse</button>
+  <button class="filter-btn" data-filter="Studio">Studio</button>
+</div>
+
+<div class="portfolio-grid" id="grid">
+  <article class="project-card" data-tag="Apartament">
+    <div class="project-img">
+      <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&q=80" alt="Apartament Cotroceni" loading="lazy">
+      <div class="project-tag">Apartament</div>
+    </div>
+    <div class="project-info">
+      <h3>Apartament Cotroceni</h3>
+      <div class="project-meta">4 camere · 142 m² · 2025</div>
+      <p class="project-desc">Rafinament clasic într-un imobil interbelic.</p>
+    </div>
+  </article>
+
+  <article class="project-card" data-tag="Casă">
+    <div class="project-img">
+      <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80" alt="Vila Snagov" loading="lazy">
+      <div class="project-tag">Casă</div>
+    </div>
+    <div class="project-info">
+      <h3>Vila Snagov</h3>
+      <div class="project-meta">Casă · 380 m² · 2025</div>
+      <p class="project-desc">O reinterpretare contemporană a casei la țară.</p>
+    </div>
+  </article>
+
+  <article class="project-card" data-tag="Penthouse">
+    <div class="project-img">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Penthouse Floreasca" loading="lazy">
+      <div class="project-tag">Penthouse</div>
+    </div>
+    <div class="project-info">
+      <h3>Penthouse Floreasca</h3>
+      <div class="project-meta">Penthouse · 220 m² · 2024</div>
+      <p class="project-desc">Vederi panoramice, materiale nobile, atmosferă de galerie.</p>
+    </div>
+  </article>
+
+  <article class="project-card" data-tag="Studio">
+    <div class="project-img">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80" alt="Studio Dorobanți" loading="lazy">
+      <div class="project-tag">Studio</div>
+    </div>
+    <div class="project-info">
+      <h3>Studio Dorobanți</h3>
+      <div class="project-meta">Studio · 56 m² · 2024</div>
+      <p class="project-desc">Locuința unei colecționare de artă într-un spațiu mic.</p>
+    </div>
+  </article>
+
+  <article class="project-card" data-tag="Apartament">
+    <div class="project-img">
+      <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80" alt="Apartament Herăstrău" loading="lazy">
+      <div class="project-tag">Apartament</div>
+    </div>
+    <div class="project-info">
+      <h3>Apartament Herăstrău</h3>
+      <div class="project-meta">3 camere · 98 m² · 2024</div>
+      <p class="project-desc">Echilibru între căldură textilă și linii grafice.</p>
+    </div>
+  </article>
+
+  <article class="project-card" data-tag="Casă">
+    <div class="project-img">
+      <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80" alt="Casa Corbeanca" loading="lazy">
+      <div class="project-tag">Casă</div>
+    </div>
+    <div class="project-info">
+      <h3>Casa Corbeanca</h3>
+      <div class="project-meta">Casă · 290 m² · 2023</div>
+      <p class="project-desc">O familie tânără, o paletă blândă, soluții durabile.</p>
+    </div>
+  </article>
+</div>
+
+<footer>
+  <span class="footer-logo">Z A I A</span>
+  <div class="footer-tagline">Studio de design interior</div>
+  <div class="footer-links">
+    <a href="#">Instagram</a>
+    <a href="#">Pinterest</a>
+    <a href="#">Behance</a>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 ZAIA Design. Toate drepturile rezervate.</span>
+    <span>zaia-design.ro</span>
+  </div>
+</footer>
+
+<script>
+const btns = document.querySelectorAll('.filter-btn');
+const cards = document.querySelectorAll('.project-card');
+
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    cards.forEach(card => {
+      const show = filter === 'toate' || card.dataset.tag === filter;
+      card.style.display = show ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
